@@ -36,9 +36,8 @@
 }
 .name {
   white-space: nowrap;   /* 🔥 forces single line */
-}
-.name {
-  font-size: 50px;   /* adjust if needed */
+  font-size: clamp(16px, 2.6vw, 38px);
+  letter-spacing: -0.5px;
 }
 /* 🌑 Background */
 body {
@@ -84,11 +83,15 @@ nav ul li a:hover,
   justify-content: space-between;
   align-items: center;
   padding: 80px 60px;
+  flex-wrap: wrap;
+  gap: 40px;
 }
 
 /* LEFT SIDE */
 .hero-text {
   max-width: 600px;
+  flex: 1;
+  min-width: 300px;
 }
 
 .hero-text h3 {
@@ -97,7 +100,7 @@ nav ul li a:hover,
 }
 
 .hero-text h1 {
-  font-size: 60px;
+  font-size: 38px;
   margin-bottom: 10px;
   color: #2c3e50;
 }
@@ -147,11 +150,17 @@ nav ul li a:hover,
 
 
 .hero-img {
-  transform: translateX(-40px);
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .hero-img img {
-  width: 450px;
-  height: 450px;
+  width: 100%;
+  max-width: 450px;
+  height: auto;
+  aspect-ratio: 1;
   object-fit: cover;
 
   object-position: top;   /* 👈 THIS FIXES FACE VISIBILITY */
@@ -1201,12 +1210,6 @@ nav ul li a:hover,
     font-size: 14px;
   }
 
-  /* Hero image */
-  .hero-img img {
-    width: 300px;
-    height: 300px;
-  }
-
   /* PAGES */
   .about,
   .education,
@@ -1313,8 +1316,23 @@ nav ul li a:hover,
 
   /* HERO SECTION */
   .hero {
-    padding: 60px 40px;
-    gap: 30px;
+    padding: 50px 30px;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .hero-text {
+    flex: 1;
+    min-width: 280px;
+  }
+
+  .hero-img {
+    flex: 1;
+    min-width: 280px;
+  }
+
+  .hero-img img {
+    max-width: 350px;
   }
 
   .hero-text h1 {
@@ -1323,12 +1341,6 @@ nav ul li a:hover,
 
   .hero-text h2 {
     font-size: 18px;
-  }
-
-  /* Hero image */
-  .hero-img img {
-    width: 350px;
-    height: 350px;
   }
 
   /* PAGES */
@@ -1395,14 +1407,23 @@ nav ul li a:hover,
 @media (min-width: 1025px) {
   /* Base styles already optimized for desktop */
 
+  /* HERO SECTION */
+  .hero {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .hero-text {
+    flex: 0 1 55%;
+  }
+
+  .hero-img {
+    flex: 0 1 45%;
+  }
+
   /* Ensure max-width for content doesn't overflow */
   .about {
     max-width: 1200px;
-  }
-
-  .hero-img img {
-    width: 450px;
-    height: 450px;
   }
 
   /* Resume view */
@@ -1424,18 +1445,15 @@ nav ul li a:hover,
 /* RESPONSIVE NAME ANIMATION */
 @media (max-width: 768px) {
   .name {
-    font-size: 32px;
-  }
-
-  .name {
-    white-space: normal;
+    font-size: clamp(20px, 4vw, 32px);
+    white-space: nowrap;
   }
 }
 
 @media (max-width: 480px) {
   .name {
-    font-size: 24px;
-    word-break: break-word;
+    font-size: clamp(14px, 5vw, 24px);
+    white-space: nowrap;
   }
 }
 
